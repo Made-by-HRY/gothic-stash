@@ -1,0 +1,32 @@
+INHERIT: ../../mkdocs.yml
+
+docs_dir: .
+site_dir: ../../site
+
+site_name: Gothic-Stash
+site_url: https://Made-by-HRY.github.io/Gothic-Stash/pl
+
+repo_name: Made-by-HRY/Gothic-Stash
+repo_url: https://github.com/Made-by-HRY/Gothic-Stash/
+
+theme:
+  lang: pl
+
+extra_css:
+  - ../assets/stylesheets/extra.css
+
+extra:
+  alternate:
+    - name: English
+      link: /Gothic-Stash/
+      lang: en
+    - name: Polski
+      link: /Gothic-Stash/pl/
+      lang: pl
+
+nav:
+  - Home: pl/index.md
+
+  - Archolos:
+    - Custom Config PL: pl/archolos/custom_config.md
+    - Technical FAQ PL: pl/archolos/technical_faq.md
