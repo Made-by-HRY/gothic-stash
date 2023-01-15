@@ -1,13 +1,13 @@
 # Custom Config
 
-Want to launch Archolos without troubleshooting your issues in the [FAQ](technical_faq.md)?   
+Want to launch Archolos without troubleshooting with the [FAQ](technical_faq.en.md)?   
 Then use this site to generate a working recommended configuration that should most likely fix all* of your problems.  
 The configuration will be based on the [latest release](https://github.com/Made-by-HRY/Gothic-Stash/releases/latest/).
 
 
-## Set Your Resolution
+## Set Game Resolution
 
-Only the last change matters, use either the manual input or select a resolution from the list.
+Only the last change matters, either enter it manually or select a resolution from the list.
 
 |                                        |
 |:--------------------------------------:|
@@ -28,7 +28,7 @@ Based on that both the `WindowPosX` and `WindowPosY` in the `SystemPack.ini` wil
 ## Mouse Settings
 
 Using a new mouse with high pooling rate and high DPI? Then the default mouse settings aren't optimal, 
-set the `mouseSensitivity` to `3` and see how much better it is. Apart from that you could try to bypass the default system 
+set the `Mouse sensitivity` to `3` and see how much better it is. Apart from that you could try to bypass the default system 
 altogether with [GRawInput](https://github.com/SaiyansKing/GRawInput/releases/latest).
 
 |                           |                                        |

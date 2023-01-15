@@ -8,4 +8,4 @@ Look no further, here you go and have fun debugging:
 [Technical FAQ](https://steamcommunity.com/sharedfiles/filedetails/?id=2874729582){ .md-button .md-button--primary }  
 Made by X4vv#6831
 
-Debugging is no fun? Then try your luck with the [recommended config](custom_config.md).
+Debugging is no fun? Then try your luck with the [recommended config](custom_config.en.md).

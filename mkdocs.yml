@@ -6,7 +6,6 @@ repo_url: https://github.com/Made-by-HRY/Gothic-Stash/
 
 theme:
   name: material
-  lang: en
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -29,6 +28,24 @@ theme:
         name: Switch to light mode
   features:
     - navigation.indexes
+
+plugins:
+  - search
+  - i18n:
+      default_language: en
+      languages:
+        en:
+          name: English
+          build: true
+        pl:
+          name: Polski
+          build: true
+      material_alternate: true
+      nav_translations:
+        pl:
+          Home: Strona Główna
+          Custom Config: Konfiguracja Niestandardowa
+          Technical FAQ: Techniczne FAQ
 
 markdown_extensions:
   - tables

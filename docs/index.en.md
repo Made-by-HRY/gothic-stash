@@ -5,4 +5,4 @@
 This is a stash of different files related with the Gothic game series.  
 Files worth looking at, can always be found via the [latest release](https://github.com/Made-by-HRY/Gothic-Stash/releases/latest/).
 
-The [site](https://made-by-hry.github.io/Gothic-Stash/) is an overlay which provides additional functionality.
+The site is an overlay which provides additional functionality.
