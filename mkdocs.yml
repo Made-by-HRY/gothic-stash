@@ -1,0 +1,48 @@
+site_name: Gothic-Stash
+site_url: https://Made-by-HRY.github.io/Gothic-Stash
+
+repo_name: Gothic-Stash
+repo_url: https://github.com/Made-by-HRY/Gothic-Stash/
+
+theme:
+  name: material
+  lang: en
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      primary: green
+      accent: light green
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: green
+      accent: light green
+      scheme: slate
+      toggle:
+        icon: material/brightness-2
+        name: Switch to light mode
+  features:
+    - navigation.indexes
+
+markdown_extensions:
+  - tables
+  - attr_list
+
+extra_javascript:
+  - assets/javascripts/extra.js
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+nav:
+  - Home: index.md
+
+  - Archolos:
+    - Custom Config: archolos/custom_config.md
+    - Technical FAQ: archolos/technical_faq.md
