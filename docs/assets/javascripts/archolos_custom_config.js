@@ -38,8 +38,8 @@ const gDX11ZenVariants = [
 const gSettingsManager = {
     width: 1280,
     height: 720,
-    mouseSensitivity: 0.5.toFixed(2),
-    mouseRotationScale: 2.0.toFixed(2),
+    mouseSensitivity: 0.5,
+    mouseRotationScale: 2.0,
     mouseSmoothing: 3,
     windowPosX: 0,
     windowPosY: 0,
@@ -54,6 +54,7 @@ const gSettingsManager = {
         { width: 2560, height: 1440 },
         { width: 3840, height: 2160 },
     ],
+    settingsMapping: {},
     setResolution(event) {
         const [width, height] = event.target.value.toLowerCase().split("x").map(Number);
         if (Number.isNaN(width) || Number.isNaN(height))
@@ -62,16 +63,16 @@ const gSettingsManager = {
         this.height = height;
     },
     setMouseSensitivity(event) {
-        const value = parseFloat(event.target.value)
+        const value = parseFloat(event.target.value.replace(",", "."))
         if (Number.isNaN(value))
             return
-        this.mouseSensitivity = value.toFixed(2);
+        this.mouseSensitivity = value;
     },
     setMouseRotationScale(event) {
-        const value = parseFloat(event.target.value)
+        const value = parseFloat(event.target.value.replace(",", "."))
         if (Number.isNaN(value))
             return
-        this.mouseRotationScale = value.toFixed(2);
+        this.mouseRotationScale = value;
     },
     setMouseSmoothing(event) {
         const value = parseInt(event.target.value, 10)
@@ -86,8 +87,8 @@ const gSettingsManager = {
             this.windowPosY = 0;
             return;
         }
-        this.windowPosX = Math.round((screenWidth - this.width) / 2);
-        this.windowPosY = Math.round((screenHeight - this.height) / 2);
+        this.windowPosX = Math.round((screenHeight - this.height) / 2); // X and Y are swapped
+        this.windowPosY = Math.round((screenWidth - this.width) / 2);
     },
     setInvMaxCols(event) {
         const value = parseInt(event.target.value, 10)
@@ -104,32 +105,54 @@ const gSettingsManager = {
     setHideTakeAnimation(event) {
         this.hideTakeAnimation = event.target.checked;
     },
+    generateSettingsMapping() {
+        this.settingsMapping = {
+            zVidResFullscreenX: this.width,
+            zVidResFullscreenY: this.height,
+            mouseSensitivity: this.mouseSensitivity,
+            zMouseRotationScale: this.mouseRotationScale,
+            zSmoothMouse: this.mouseSmoothing,
+            invMaxColumns: this.invMaxCols,
+            zShowWeaponTrails: this.showWeaponTrails ? 1 : 0,
+            Width: this.width,
+            Height: this.height,
+            WindowPosX: this.windowPosX,
+            WindowPosY: this.windowPosY,
+            HideFocus: this.hideFocus ? 1 : 0,
+            No_Take_Anim: this.hideTakeAnimation ? 1 : 0,
+        };
+    },
     processTextForFile(filePath, text) {
-        // TODO Change it to read the files line by line and only call replace on the lines, performance
-        if (filePath.includes("gothic.ini")) {
-            text = text.replace(/zVidResFullscreenX=.*/i, `zVidResFullscreenX=${this.width}`);
-            text = text.replace(/zVidResFullscreenY=.*/i, `zVidResFullscreenY=${this.height}`);
-            text = text.replace(/mouseSensitivity=.*/i, `mouseSensitivity=${this.mouseSensitivity}`);
-            text = text.replace(/zMouseRotationScale=.*/i, `zMouseRotationScale=${this.mouseRotationScale}`);
-            text = text.replace(/zSmoothMouse=.*/i, `zSmoothMouse=${this.mouseSmoothing}`);
-            text = text.replace(/invMaxColumns=.*/i, `invMaxColumns=${this.invMaxCols}`);
-            text = text.replace(/zShowWeaponTrails=.*/i, `zShowWeaponTrails=${this.showWeaponTrails ? 1 : 0}`);
-        } else if (filePath.includes("UserSettings.ini")) {
-            text = text.replace(/Width=.*/i, `Width=${this.width}`);
-            text = text.replace(/Height=.*/i, `Height=${this.height}`);
-        } else if (filePath.includes("systempack.ini")) {
-            text = text.replace(/WindowPosX=.*/i, `WindowPosX=${this.windowPosY}`); // swapped Y
-            text = text.replace(/WindowPosY=.*/i, `WindowPosY=${this.windowPosX}`); // swapped X
-            text = text.replace(/HideFocus=.*/i, `HideFocus=${this.hideFocus ? 1 : 0}`);
-            text = text.replace(/^No_Take_Anim=.*/im, `No_Take_Anim=${this.hideTakeAnimation ? 1 : 0}`);
+        // Skip ZENResources, nothing is changed there
+        if (filePath.includes(gZenResourcesBase)) {
+            return text;
         }
-        return text;
+
+        const lines = text.split(/\r\n|\n/im);
+
+        for (const i in lines) {
+            for (const key in this.settingsMapping) {
+                const regex = new RegExp(`^[ \t]*${key}=.*`, "im");
+                const value = this.settingsMapping[key];
+                if (regex.test(lines[i])) {
+                    console.debug(lines[i], "->", value, filePath);
+                    if (typeof value === typeof 1 && !Number.isInteger(value)) {
+                        lines[i] = lines[i].replace(regex, `${key}=${value.toFixed(2)}`);
+                    } else {
+                        lines[i] = lines[i].replace(regex, `${key}=${value}`);
+                    }
+                    break;
+                }
+            }
+        }
+
+        return lines.join("\r\n");
     },
     getTitleString() {
         let title = "";
         title += `R${this.width}x${this.height}`;
-        title += `_MS${this.mouseSensitivity}`;
-        title += `_MR${this.mouseRotationScale}`;
+        title += `_MS${this.mouseSensitivity.toFixed(2)}`;
+        title += `_MR${this.mouseRotationScale.toFixed(2)}`;
         title += `_MA${this.mouseSmoothing}`;
         title += `_C${((this.windowPosX > 0) || (this.windowPosY > 0)) ? 1 : 0}`;
         title += `_I${this.invMaxCols}`;
@@ -146,6 +169,7 @@ const gDownloadManager = {
     downloadZip() {
         const zip = new JSZip();
         const promises = [];
+        gSettingsManager.generateSettingsMapping();
         for (const url in this.urlToFile) {
             if (!this.downloadedTexts[url]) {
                 promises.push(
