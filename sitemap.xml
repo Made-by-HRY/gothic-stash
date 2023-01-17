@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+         <loc>https://Made-by-HRY.github.io/Gothic-Stash/</loc>
+         <lastmod>2023-01-17</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://Made-by-HRY.github.io/Gothic-Stash/en/"/>
+         <xhtml:link rel="alternate" hreflang="pl" href="https://Made-by-HRY.github.io/Gothic-Stash/pl/"/>
+         
+    </url>
+    <url>
+         <loc>https://Made-by-HRY.github.io/Gothic-Stash/archolos/custom_config/</loc>
+         <lastmod>2023-01-17</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://Made-by-HRY.github.io/Gothic-Stash/en/archolos/custom_config/"/>
+         <xhtml:link rel="alternate" hreflang="pl" href="https://Made-by-HRY.github.io/Gothic-Stash/pl/archolos/custom_config/"/>
+         
+    </url>
+    <url>
+         <loc>https://Made-by-HRY.github.io/Gothic-Stash/archolos/technical_faq/</loc>
+         <lastmod>2023-01-17</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="https://Made-by-HRY.github.io/Gothic-Stash/en/archolos/technical_faq/"/>
+         <xhtml:link rel="alternate" hreflang="pl" href="https://Made-by-HRY.github.io/Gothic-Stash/pl/archolos/technical_faq/"/>
+         
+    </url>
+</urlset>
