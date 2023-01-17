@@ -191,7 +191,13 @@ const gDownloadManager = {
             }
         }
         Promise.all(promises)
-            .then(() => zip.generateAsync({type:"blob"}))
+            .then(() => zip.generateAsync({
+                type: "blob",
+                compression: "DEFLATE",
+                compressionOptions: {
+                    level: 6
+                },
+            }))
             .then(content => {
                 // FileSaver.js saveAs
                 window.saveAs(content, `TheChroniclesOfMyrtana_${gSettingsManager.getTitleString()}.zip`);
