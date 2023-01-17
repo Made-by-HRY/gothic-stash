@@ -20,15 +20,19 @@ const gFileNames = [
 
 // noinspection SpellCheckingInspection
 const gDX11ZenVariants = [
-    "DieChronikenVonMyrtana",
-    "DieChronikenVonMyrtanaPolnischeSprachausgabe",
-    "KronikiMyrtany",
-    "LeCronacheDiMyrtana",
-    "LeCronacheDiMyrtanaDoppiaggioPolacco",
-    "TheChroniclesOfMyrtana",
-    "TheChroniclesOfMyrtanaPolishVo",
-    "TheChroniclesOfMyrtanaRU",
-    "TheChroniclesOfMyrtanaRUPolishVo",
+    "KronikiMyrtany",                                   // Polish Version
+    "TheChroniclesOfMyrtana",                           // English Silent
+    "TheChroniclesOfMyrtanaPolishVo",                   // English VO
+    "DieChronikenVonMyrtana",                           // German Silent
+    "DieChronikenVonMyrtanaPolnischeSprachausgabe",     // German VO
+    "LeCronacheDiMyrtana",                              // Italian Silent
+    "LeCronacheDiMyrtanaDoppiaggioPolacco",             // Italian VO
+    "TheChroniclesOfMyrtanaRU",                         // Russian Silent
+    "TheChroniclesOfMyrtanaRUPolishVo",                 // Russian VO
+    "LasCronicasDeMyrtana",                             // Spanish Silent
+    "LasCronicasDeMyrtanaVocesPolaco",                  // Spanish VO
+    "LasCronicasDeMyrtanaLatam",                        // Spanish Latin Silent
+    "LasCronicasDeMyrtanaLatamVocesPolaco",             // Spanish Latin VO
 ];
 
 const gSettingsManager = {
